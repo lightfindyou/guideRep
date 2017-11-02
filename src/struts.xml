@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<package name="front" namespace="/" extends="struts-default">
+	   <interceptors>
+            <interceptor name="authority" class="filter.LoginFilter" />
+        </interceptors>
+        
+		<default-action-ref name="loginPage" />
+		
+		<!--默认跳转到登陆界面-->
+        <action name="loginPage" class="toDefault.loginPage">
+            <result>/html/landing.html</result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action> 
+        
+        <!-- 注册 -->
+        <action name="register" class="action.UserAction" method="register">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 改变电话号 -->
+        <action name="changePhoneNumber" class="action.UserAction" method="changePhoneNumber">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 改变密码 -->
+        <action name="changePassword" class="action.UserAction" method="setPassword">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 发送验证码 -->
+        <action name="getVerifCode" class="action.UserAction"  method="getVerificationCode">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action> 
+        
+        <!-- 检查验证码 -->
+        <action name="checkVerificationCode" class="action.UserAction" method="checkVerificationCode">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 获取个人信息 -->
+        <action name="getPersionalInfo" class="action.UserAction" method="getPersionalInfo">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 登陆 -->
+        <action name="login" class="action.UserAction">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action> 
+        
+        <!-- 完整用户信息 -->
+        <action name="completeUser" class="action.UserAction" method="completeUserInfo">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action> 
+        
+        <!-- 设置密码 -->
+        <action name="completeAccount" class="action.UserAction" method="setPassword">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action> 
+        
+        <!-- 申请房间 -->
+        <action name="applyRoom" class="action.RoomAction" method="apply">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+            
+        </action>
+        
+        <!-- 查询自己的房间 -->
+        <action name="myDorm" class="action.UserAction" method="myDorm">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 查询课程信息 -->
+        <action name="queryClass" class="action.CourseAction">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action> 
+        
+        <!-- 添加openid -->     
+        <action name="addOpenId" class="action.OpenIdAction" >
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 获取班级名称列表 -->
+        <action name="getClass" class="action.CourseAction" method="getClassList">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 获取用户课程 -->
+        <action name="getMyCourse" class="action.UserAction" method="getMyCourse">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+            <interceptor-ref name="authority" />
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 管理员接口 -->
+        
+        <!-- 成员信息总览 -->
+        <action name="userPandect" class="action.UserAction" method="userPandect">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+         
+        <!-- 管理员添加用户 -->
+        <action name="addUserByAdmin" class="action.UserAction" method="addUserByAdmin">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+      
+        <!-- 管理员发送短信 -->
+        <action name="sendMessage" class="action.TextAction" >
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 获取已发送信息 -->
+        <action name="messageOverview" class="action.TextAction" method="getSentText">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 添加班级 -->
+        <action name="addClass" class="action.CourseAction" method="addClass">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 向班级成员发送短信 -->
+        <!-- <action name="sendMessageToClasses" class="action.TextAction" method="sendMessageToClasses">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action> -->
+        
+        <!-- 向班级成员发送短信 -->
+        <action name="courseOverview" class="action.CourseAction" method="courseOverview">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        
+        <!-- 管理员登陆 -->
+        <action name="adminLogin" class="action.UserAction" method="adLogin">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 添加课程 -->
+        <action name="addCourse" class="action.CourseAction" method="addCourse">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+         <!-- 根据课程添加学员 -->
+        <action name="addStuByCor" class="action.CourseAction" method="addStuByCor">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 根据课程删除学员 -->
+        <action name="delStuByCor" class="action.CourseAction" method="delStuByCor">
+            <result type="stream">
+                <param name="type">text/html;charset= UTF-8</param>
+                <param name="hello">inputStream</param>
+            </result>
+        </action>
+        
+    </package>
+</struts>
